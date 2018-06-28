@@ -11,6 +11,6 @@ In this project, we were given a [starter template](https://github.com/udacity/p
 
 
 ## Preview
-![Pixel Art](https://github.com/susanschen/Pixel-Art-Maker/blob/master/happy.JPG "Pixel Art")
+![Pixel Art](image/udacityScreen-shot.png "Pixel Art")
 
 

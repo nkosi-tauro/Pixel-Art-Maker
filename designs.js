@@ -1,13 +1,8 @@
-/**
- 
- */
 
-
-/// Wrapped it into an IIFE to protect namespacing.
 (function(document){
-    'use strict';
 
-    /// Cache selectors here to avoid redundant DOM lookups.
+
+    // the DOM Selectors.
     const elements = {
         colorPicker: document.getElementById('colorPicker'),
         gridCanvas: document.getElementById('pixel_canvas'),
@@ -15,49 +10,41 @@
         heightInput: document.getElementById('input_height')
     };
 
+
     /**
-     * @description Initialize by binding the event handlers.
-     *
-     * @function
+     * ///////THIS BLOCK OF CODE DOES THIS/////
+        Initialize by binding the event handlers.
      */
+
+
     const init = function() {
 
-        // Build the grid event listener.
+        //  the grid event listener.
         document.getElementById('sizePicker').addEventListener('submit', makeGrid, false);
 
-        // Set the grid's color listener.
+        // Set the grids color listener.
         elements.gridCanvas.addEventListener('click', setGridColor);
     };
 
-    /*=================
-     * Event Handlers
-     *=================/
 
-    /**
-     * @description Make Grid Handler.
-     *
-     * @function
-     *
-     * @param {object} Event object.
-     */
+    /*EVENT HANDLERS */ 
+
     function makeGrid(event) {
-        /// Prevent the form from submitting to a non-existent back-end,
-        /// which would cause a web page refresh.
+
+        //prevents the form from submitting to nothing(no back-end)
         event.preventDefault();
 
-        /// Broke out into a separate function as it's a different task.
         const gridSize = getGridSize();
 
-        /// Clear the HTML to reset the canvas.
+        // Clears the HTML to reset the canvas.
         clearCanvas();
 
-        /// Build up each row.
+        // Building up the rows (1 .
         for (let row = 0; row < gridSize.numberOfRows; row++) {
             let tr = elements.gridCanvas.insertRow(row);
 
-            // For this row, insert each td.
+            // For this row, insert each table data.
             for (let col = 0; col < gridSize.numberOfColumns; col++) {
-                /// As I'm not inserting anything into the td, we don't need a variable.
                 tr.insertCell(col);
             }
         }
@@ -65,10 +52,12 @@
 
 
     /**
-     * @description Set the selected grid's background color.
-     *
-     * @function
+     *  ///////THIS BLOCK OF CODE DOES THIS/////
+     * Set the selected grid's background color.
+    
      */
+
+
     function setGridColor(event) {
         let color = elements.colorPicker.value;
 
@@ -77,21 +66,25 @@
 
 
     /**
-     * @description Clear the grid canvas' HTML.
-     *
-     * @function
+     * ///////THIS BLOCK OF CODE DOES THIS/////
+     *  Clears the grid canvas' HTML.
      */
+
+
+
     function clearCanvas() {
         elements.gridCanvas.innerHTML = '';
     }
 
     /**
-     * @description Gets the selected grid size.
+     * 
+     * ///////THIS BLOCK OF CODE DOES THIS/////
+     * Gets the selected grid size.
      *
-     * @function
-     *
-     * @returns {object} Returns an object
+     * Returns an object
      */
+
+
     function getGridSize() {
         let numberOfRows = elements.heightInput.value;
         let numberOfColumns = elements.widthInput.value;
